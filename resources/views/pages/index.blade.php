@@ -416,60 +416,30 @@
             </div>
         </div>
         <div class="row d-flex">
+            @if ($posts->count() > 0)
+            @foreach ($posts as $post)
             <div class="col-lg-4 d-flex ftco-animate">
                 <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
+                    <a href="{{ route('blog.show',['blog' => $post->id])}}" class="block-20" style="background-image: url('/images/post/{{ $post->image }}');">
                     </a>
                     <div class="text d-flex float-right d-block">
                         <div class="topper text-center pt-4 px-3">
-                            <span class="day">18</span>
-                            <span class="mos">January</span>
-                            <span class="yr">2019</span>
+                            <span class="day">{{ $post->created_at->format('jS') }}</span>
+                            <span class="mos">{{ $post->created_at->format('F') }}</span>
+                            <span class="yr">{{ $post->created_at->format('Y') }}</span>
                         </div>
                         <div class="desc p-4">
-                            <h3 class="heading mt-2"><a href="#">All you want to know about Bible</a></h3>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary
-                                regelialia.</p>
-                        </div>
+                        <h3 class="heading mt-2"><a href="{{ route('blog.show',['blog' => $post->id])}}">{{ $post->title }}</a></h3>
+                        <p>{{ $post->preview }}</p>
+                    </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 d-flex ftco-animate">
-                <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
-                    </a>
-                    <div class="text d-flex float-right d-block">
-                        <div class="topper text-center pt-4 px-3">
-                            <span class="day">15</span>
-                            <span class="mos">January</span>
-                            <span class="yr">2019</span>
-                        </div>
-                        <div class="desc p-4">
-                            <h3 class="heading mt-2"><a href="#">All you want to know about Bible</a></h3>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary
-                                regelialia.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 d-flex ftco-animate">
-                <div class="blog-entry">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
-                    </a>
-                    <div class="text d-flex float-right d-block">
-                        <div class="topper text-center pt-4 px-3">
-                            <span class="day">14</span>
-                            <span class="mos">January</span>
-                            <span class="yr">2019</span>
-                        </div>
-                        <div class="desc p-4">
-                            <h3 class="heading mt-2"><a href="#">All you want to know about Bible</a></h3>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary
-                                regelialia.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+            @else
+                <h3>No Recent Blog Posts</h3>
+            @endif
+
         </div>
     </div>
 </section>

@@ -28,6 +28,12 @@
                 <i class="mdi mdi-contacts menu-icon"></i>
             </a>
         </li>
+        <li class="nav-item  {{ Route::currentRouteName() == 'post.index'? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('post.index')}}">
+                <span class="menu-title">Blog</span>
+                <i class="mdi mdi-contacts menu-icon"></i>
+            </a>
+        </li>
         <li class="nav-item sidebar-actions">
             <span class="nav-link">
                 <div class="border-bottom">

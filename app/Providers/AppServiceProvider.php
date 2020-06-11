@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(
             'layouts._recent-blogs',
             function ($view) {
-                $view->with('posts', Post::latest()->take(3)->get());
+                $view->with('posts', Post::where('feature', true)->latest()->take(3)->get());
             }
         );
     }

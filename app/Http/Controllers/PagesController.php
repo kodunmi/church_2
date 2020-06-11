@@ -11,7 +11,8 @@ class PagesController extends Controller
     public function index(){
 
         return view('pages.index',[
-            'events' => Event::all()->take(2)
+            'events' => Event::where('feature', true)->take(2)->get(),
+            'posts' => Post::where('feature', true)->latest()->take(3)->get()
         ]);
 
     }
@@ -37,8 +38,7 @@ class PagesController extends Controller
     public function upcomingEvent(){
 
         return view('pages.events',[
-            'events' => Event::all(),
-            'posts' => Post::all()
+            'events' => Event::where('feature', true)->latest()->get(),
         ]);
 
     }

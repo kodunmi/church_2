@@ -27,7 +27,7 @@
                         <span class="yr">{{ $post->created_at->format('Y') }}</span>
                     </div>
                     <div class="desc p-4">
-                    <h3 class="heading mt-2"><a href="#">{{ $post->title }}</a></h3>
+                    <h3 class="heading mt-2"><a href="{{ route('blog.show',['blog' => $post->id])}}">{{ $post->title }}</a></h3>
                     <p>{{ $post->preview }}</p>
                 </div>
                 </div>
