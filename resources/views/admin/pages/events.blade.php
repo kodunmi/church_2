@@ -34,7 +34,13 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 0 128 128" width="50px" class=""><g><g><circle cx="64" cy="64" fill="#4ce797" r="43.125" data-original="#4CE797"/><circle cx="64" cy="64" fill="#e7f8fc" r="34.544" data-original="#E7F8FC" class="active-path" style="fill:#E7F8FC"/><path d="m58.211 81.479a3.894 3.894 0 0 1 -2.694-1.079l-11.569-11.1a3.892 3.892 0 1 1 5.388-5.618l8.59 8.239 20.468-24.03a3.893 3.893 0 1 1 5.927 5.048l-23.147 27.171a3.893 3.893 0 0 1 -2.767 1.364c-.065.003-.13.005-.196.005z" fill="#4ce797" data-original="#4CE797"/></g></g> </svg>
                             </div>
                         @endif
-
+                        @if ($event->attendees->count() > 0)
+                            <div class="featured">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#attendees{{ $event->id }}">
+                                   Attendees {{ $event->attendees->count() }}
+                                  </button>
+                            </div>
+                        @endif
                         <div class="text-center {{ $event->feature ? 'mt-1' : 'mt-5'}}">
                         <p>{{ $event->title }}</p>
                         </div>
@@ -53,6 +59,7 @@
             </div>
             @include('admin.modals.delete-event',['event' => $event])
             @include('admin.modals.edit-event',['event' => $event])
+            @include('admin.modals.attendee',['event' => $event])
             @endforeach
 
         </div>
